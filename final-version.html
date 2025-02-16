@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sequential Videos</title>
+        <link rel="stylesheet" href="final-version.css">
+    </head>
+    <body>
+
+    <div class="video-container">
+
+        <!-- Text Overlay -->
+        <div class="overlay-text">
+          <h1 class="zoom-text">FRACTAL MIND INNOVATIONS</h1>
+        </div>
+
+        <!-- Video 1 -->
+        <video id="video1" autoplay>
+          <source src="videos/big-bang-bg.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
+        <!-- Video 2 -->
+        <video id="video2" muted loop>
+          <source src="videos/post-big-bang-bg.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
+        <!-- Tabs Overlay -->
+        <div class="tabs-overlay">
+          
+            <!-- Tab Buttons -->
+            <div class="tab-buttons">
+              <button class="tablink" onclick="openTab(event, 'About')">Who we are</button>
+              <button class="tablink" onclick="openTab(event, 'Services')">Products</button>
+              <button class="tablink" onclick="openTab(event, 'Services')">Services</button>
+              <button class="tablink" onclick="openTab(event, 'Services')">Training</button>
+              <button class="tablink" onclick="openTab(event, 'Services')">Fractal Minds</button>
+              <button class="tablink" onclick="openTab(event, 'Contact')">Contact</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="About" class="tab-content active">
+              <!-- <h2>About Us</h2>
+              <p>We are passionate about delivering amazing experiences.</p> -->
+            </div>
+
+            <div id="Services" class="tab-content">
+              <!-- <h2>Our Services</h2>
+              <p>We offer web development, design, and marketing solutions.</p> -->
+            </div>
+
+            <div id="Contact" class="tab-content">
+              <!-- <h2>Contact Us</h2>
+              <p>Email us at contact@example.com or call us at (123) 456-7890.</p> -->
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        /* Function to Open Tabs */
+        function openTab(event, tabName) {
+          
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Remove "active" class from all buttons
+            const tabLinks = document.querySelectorAll('.tablink');
+            tabLinks.forEach(link => link.classList.remove('active'));
+
+            // Show the clicked tab's content and set the button as active
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+
+    <script>
+        // Get references to both videos
+        const video1 = document.getElementById('video1');
+        const video2 = document.getElementById('video2');
+
+        // When the first video ends, play the second one
+        video1.addEventListener('ended', () => {
+            video1.style.display = 'none'; // Hide the first video
+            video2.style.display = 'block'; // Show the second video
+            video2.play(); // Start playing the second video
+        });
+
+        // Optionally, you can add an event for when the second video ends
+        video2.addEventListener('ended', () => {
+            alert('Both videos have finished playing!');
+            // You can redirect, restart, or perform any other action here
+        });
+    </script>
+
+    <script>
+          // Select the video element
+          const video = document.getElementById('video1');
+
+          // Set playback speed after the video starts loading
+          window.onload = () => {
+              video.playbackRate = 1; // Set playback speed to 2x (double speed)
+          };
+    </script>
+
+    <script>
+        // Remove "active" class from all buttons
+        const tabLinks = document.querySelectorAll('.tablink');
+        tabLinks.forEach(link => link.classList.remove('active'));
+    </script>
+
+    </body>
+</html>
